@@ -1,3 +1,4 @@
+
 class Card{
     constructor(suit, rank){
         this.rank = rank;
@@ -55,8 +56,9 @@ class Blackjack{
         this.dealer = new Dealer();
     }
     deal(receiver = this.player,quantity = 1){ //default options deal 1 card to the player
+        let card;
         for(let counter = 0; counter < quantity; counter++){
-            let card = this.deck.draw();//draw card
+            card = this.deck.draw();//draw card
             if(card.rank === 1){ //if it's an ace...
                 receiver.points += 11; //TODO ALLOW PLAYER TO SELECT
             }
@@ -68,6 +70,7 @@ class Blackjack{
             }
             receiver.cards.push(card);
          }
+         return card;
     }
     start(){
         this.deal(this.player,2);//player receives two cards
